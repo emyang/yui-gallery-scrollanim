@@ -1,0 +1,48 @@
+html {
+    height:100%;
+    /*overflow:hidden;*/
+}
+
+body {
+    /*overflow:hidden;*/
+    width:100%;
+    height:100%;
+    /*position: relative; */
+}
+
+section {
+	height: 1200px;
+}
+
+#scrollanim-container{
+    /* position: absolute; */
+    width:100%;
+}
+
+#firstSection { 
+    background: url("http://lorempixel.com/g/300/200/abstract") 50% 50% no-repeat fixed;
+    background-size: 100% 100%;
+    position: relative;
+}
+
+#firstSection article{
+    padding: 10px;
+    margin: auto;
+}
+
+#firstSection img{
+	margin: 0 auto;
+	display: block;
+}
+
+#mainTitle {
+	font-weight: bold;
+	font-size: 197%;
+	color: #fff;
+	text-align: center;
+}
+
+#img2 {
+	position: absolute;
+	left: 50%;
+}

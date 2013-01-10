@@ -1,0 +1,31 @@
+{
+    "name"       : "gallery-scrollanim",
+    "displayName": "Gallery: gallery-scrollanim",
+    "description": "This is a widget that animates HTML elements based on vertical page scroll.",
+    "author"     : [ "emyang" ],
+    "use"        : [ "gallery-scrollanim" ],
+    "yuiVersion" : "3.8.0",
+    "yuiBuildUrl" : "http://yui.yahooapis.com/3.8.0/build",
+    "yuiSeedUrl" : "http://yui.yahooapis.com/3.8.0/build/yui/yui-min.js",
+
+    "tags": [ "gallery" ],
+
+    "examples": [
+        {
+        	"name": "simple-scrollanim",
+        	"displayName": "Scrolling Animation",
+        	"description": "Simple demo of Scroll Animation widget",
+        	"modules": ["gallery-scrollanim"],
+        	"tags": ["widget", "gallery-scrollanim"],
+        	"hideTableOfContents": true
+        }
+    ],
+
+    "pages": {
+        "simple-scrollanim-example": {
+        	"name": "simple-scrollanim",
+            "displayName": "Simple Scroll Animation Example",
+            "layout": "simple-scrollanim-example"
+        }
+    }
+}

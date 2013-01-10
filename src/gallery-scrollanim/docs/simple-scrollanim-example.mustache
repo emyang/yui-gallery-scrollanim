@@ -1,0 +1,53 @@
+<div id="scrollanim-container">
+	<section id="firstSection">
+		<article>
+			<h2 id="mainTitle">Simple Scrolling Animation Example</h2>
+	        <img id="img1" src="http://placekitten.com/300/200">
+	    </article> 
+	    <img id="img2" src="http://placekitten.com/200/300">       
+    </section>
+</div>
+
+<script>
+YUI().use('gallery-scrollanim', function(Y){
+    var animations = [
+	        {
+	            selector: '#firstSection #img2',
+	            startAt: 0,
+	            endAt: 700,
+	            onEndAnimate: function( anim ) {},
+	            keyframes: [
+	                { 
+	         	        position: 0,
+	         		    properties: {
+	         			    "top": -500
+	         		    }	
+	         	    },
+	                {
+	         	        position: 1,
+	         		    ease: TWEEN.Easing.Quadratic.EaseInOut,
+	         		    properties: {
+	         		        "top": 600
+	         		    }
+	         	    }
+	            ]
+	        }
+        ], 
+        scrollAnimConfig = {
+            node: '#scrollanim-container',            // main container selector
+            slideHeight: 1200,                        // height of each section
+            animations: animations,                   // animation data
+            maxScroll: 1000,                          // max scroll
+            useRAF: false,                             // set requestAnimationFrame
+            tickSpeed: 50,                            // set interval (ms) if not using RAF
+            scrollSpeed: 15,                          // scroll animation speed
+            debug: false,                             // turn on debug
+            tweenSpeed: 0.5,                          // scrollTop tween speed
+            startAt: 0                                // scrollTop where the experience starts
+        },
+        scrollAnimWidget;
+
+    scrollAnimWidget = new Y.ScrollAnim(scrollAnimConfig);
+    //scrollAnimWidget.render();
+});
+</script>

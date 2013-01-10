@@ -1,0 +1,8 @@
+{
+    "gallery-scrollanim": {
+        "requires": [
+            "widget"
+        ],
+        "skinnable": false
+    }
+}

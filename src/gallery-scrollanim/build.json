@@ -1,0 +1,10 @@
+{
+    "name": "gallery-scrollanim",
+    "builds": {
+        "gallery-scrollanim": {
+            "jsfiles": [
+                "js/gallery-scrollanim.js"
+            ]
+        }
+    }
+}
