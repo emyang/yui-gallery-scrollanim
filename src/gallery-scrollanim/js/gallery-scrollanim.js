@@ -1,5 +1,11 @@
 /*global YUI,Modernizr,window,TWEEN*/
 /*jslint nomen: true*/
+/**
+ * This is a widget that animates HTML elements based on vertical page scroll.
+ * @author Emily Yang <emyang@yahoo-inc.com>
+ * @namespace scrollAnim
+ * @class gallery-scrollanim
+ */
 YUI.add('gallery-scrollanim', function (Y) {
     'use strict';
 
