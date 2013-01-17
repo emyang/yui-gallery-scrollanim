@@ -12,16 +12,10 @@ YUI.add('gallery-scrollanim', function (Y) {
     var ATTRIBUTE = Y.Attribute,
         LANG = Y.Lang,
         ARRAY = Y.Array,
-        OBJECT = Y.Object,
-        TRUE = true,
-        FALSE = false,
         NULL = null,
-        d = Y.one('document'),
-        w = Y.one('window'),
         TOUCH = Modernizr.touch;
 
-    function ScrollAnim(cfg) {
-
+    function ScrollAnim() {
         // Invoke Base constructor, passing through arguments
         ScrollAnim.superclass.constructor.apply(this, arguments);
 
@@ -146,9 +140,7 @@ YUI.add('gallery-scrollanim', function (Y) {
         initializer: function (cfg) {
             // initialize
             var node = this.get('node'),
-                anims = this.get('animations'),
-                useRAF = this.get('useRAF'),
-                tickSpeed = this.get('tickSpeed');
+                anims = this.get('animations');
 
             this.settings = cfg;
             this.animation = anims;
@@ -171,8 +163,8 @@ YUI.add('gallery-scrollanim', function (Y) {
         requestAnimationFramePolyfill: function () {
 
             // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
-            // http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating           
-            // requestAnimationFrame polyfill by Erik M√∂ller
+            // http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
+            // requestAnimationFrame polyfill by Erik Mâˆšâˆ‚ller
             // fixes from Paul Irish and Tino Zijdel
 
             var lastTime = 0,
@@ -185,7 +177,7 @@ YUI.add('gallery-scrollanim', function (Y) {
             }
 
             if (!window.requestAnimationFrame) {
-                window.requestAnimationFrame = function (callback, element) {
+                window.requestAnimationFrame = function (callback) {
 
                     var currTime = new Date().getTime(),
                         timeToCall = Math.max(0, 16 - (currTime - lastTime)),
@@ -405,7 +397,7 @@ YUI.add('gallery-scrollanim', function (Y) {
             // destroy
         },
 
-        // Run before animation starts when animation is in range 
+        // Run before animation starts when animation is in range
         startAnimatable: function (anim) {
             // apply start properties
             if (!anim._started) {
@@ -426,7 +418,9 @@ YUI.add('gallery-scrollanim', function (Y) {
                 endAt = Y.Lang.isFunction(anim.endAt) ? anim.endAt() : anim.endAt;
 
             // Apply end properties after items move out of range if they were running
-            if (((anim._started && endAt < this.scrollTopTweened) || (anim._started && startAt > this.scrollTopTweened)) || (this.scrollDirection < 0 && anim.lastProgress > 0 && startAt > this.scrollTopTweened) || (this.scrollDirection > 0 && anim.lastProgress < 1 && endAt < this.scrollTopTweened)) {
+            if (((anim._started && endAt < this.scrollTopTweened) || (anim._started && startAt > this.scrollTopTweened)) ||
+                    (this.scrollDirection < 0 && anim.lastProgress > 0 && startAt > this.scrollTopTweened) ||
+                    (this.scrollDirection > 0 && anim.lastProgress < 1 && endAt < this.scrollTopTweened)) {
 
                 this.render(anim);
 
@@ -441,7 +435,7 @@ YUI.add('gallery-scrollanim', function (Y) {
 
         /**
          * Calls onInit() callbacks passed to the animation object and to each key frame
-         * This function is called on init and on resize 
+         * This function is called on init and on resize
          */
         setAnimatable: function () {
             var animations = this.get('animations');
@@ -457,8 +451,6 @@ YUI.add('gallery-scrollanim', function (Y) {
 
                 // integrate through keyframes
                 Y.Array.each(animation.keyframes, function (keyframe) {
-
-                    var nextKeyframe;
 
                     // execute onInit callback for each keyframe
                     if (LANG.isFunction(keyframe.onInit)) {
@@ -506,7 +498,7 @@ YUI.add('gallery-scrollanim', function (Y) {
         },
 
         // resize event
-        resizeHandler: function (e) {
+        resizeHandler: function () {
             this.resize();
         },
 
@@ -527,7 +519,7 @@ YUI.add('gallery-scrollanim', function (Y) {
             this.scrollStart = this.scrollTop;
         },
 
-        touchEndHandler: function (e) {
+        touchEndHandler: function () {
 
         },
 
