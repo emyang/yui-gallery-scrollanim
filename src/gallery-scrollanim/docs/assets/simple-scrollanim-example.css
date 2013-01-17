@@ -5,8 +5,9 @@ html {
 
 body {
     overflow: hidden; /* stops the scrolling out of bounds behavior in Safari that messes up the scroll animation */
-    width:100%;
     height:100%;
+    width: 1200px;
+    margin: 0 auto;
 }
 
 section {
@@ -25,12 +26,12 @@ p {
 }
 
 #scrollanim-container{
-    width:100%;
+    width: inherit;
 }
 
 #verticalScrollArea{
     position: absolute;
-    width:100%;
+    width: inherit;
 }
 
 #kittens { 
