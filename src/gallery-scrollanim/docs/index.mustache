@@ -1,14 +1,62 @@
 <div class="intro">
     <p>
-    This is a widget that animates HTML elements based on vertical page scroll.
+    ScrollAnim is a widget that animates HTML elements based on vertical page scroll.  With ScrollAnim widget, you can quickly create sites that have various HTML elements move or fade according to how far the user has scrolled down the site.  The animation for each HTML element is also gracefully controlled by easing functions of your choosing.  Also the widget is great for achieving the popular "parallax effects", when certain elements (especially the backgrounds) move at a different speed than the user-controlled scrolling speed.   
     </p>
 </div>
 
-<h2>Description</h2>
+<h2>Getting Started</h2>
 
-<p>*Module Description Goes Here*</p>
+<p>To include the source files for ScrollAnim and its dependencies, first load the YUI seed file if you haven't already loaded it.</p>
 
 ```
-//Module example code
+<script src="http://yui.yahooapis.com/3.8.0/build/yui/yui-min.js"></script>
 ```
 
+<p>Next, create a new YUI instance for your application and populate it with the modules you need by specifying them as arguments to the `YUI().use()` method. YUI will automatically load any dependencies required by the modules you specify.</p>
+
+```
+<script>
+// Create a new YUI instance and populate it with the required modules.
+YUI().use('gallery-scrollanim', function (Y) {
+    // ScrollAnim is available and ready for use. Add implementation
+    // code here.
+});
+</script>
+```
+
+<p>For more information on creating YUI instances and on the <a href="http://yuilibrary.com/yui/docs/api/classes/YUI.html#method_use">use() method</a>, see the documentation for the <a href="http://yuilibrary.com/yui/docs/yui/index.html">YUI Global Object</a>. </p>
+
+<h2>Using ScrollAnim</h2>
+
+<h3>Instantiating a ScrollAnim Widget</h3>
+<p>*Quick tutorial on using the widget*</p>
+
+<h3>ScrollAnim Attributes</h2>
+
+<p>ScrollAnim requires the following attributes to be set, in addition to the attributes provided by the base <a href="http://yuilibrary.com/yui/docs/widget/index.html#attributes">Widget</a> class:</p>
+
+<table>
+    <tr><th>Attribute</th><th>Description</th></tr>
+    <tr><td>`node`</td><td>Main container selector</td></tr>
+    <tr><td>`slideHeight`</td><td>height of each section</td></tr>
+    <tr><td>`animations`</td><td>Animation data for all animated HTML elements</td></tr>
+    <tr><td>`startAt`</td><td>Minimum `window.scrollTop` value in which the scrolling animation should start</td></tr>     
+    <tr><td>`maxScroll`</td><td>Maximum `window.scrollTop` value in which the scrolling animation should stop</td></tr>
+    <tr><td>`useRAF`</td><td>Set if the widget should use `window.requestAnimationFrame` method when available.</td></tr>
+    <tr><td>`tickSpeed`</td><td>Set interval (ms) for `window.setInterval` if not using RAF</td></tr>
+    <tr><td>`scrollSpeed`</td><td>Scrolling animation speed</td></tr>
+    <tr><td>`debug`</td><td>Turn on debug mode</td></tr>
+    <tr><td>`tweenSpeed`</td><td>`window.scrollTop` tween speed</td></tr>  
+</table>
+
+<h2>Markup Structure</h2>
+
+<p>*Required markup structure explained*</p>
+
+<h2>CSS</h2>
+
+<p>*Required markup structure explained*</p>
+
+<h2>3rd Party Dependency</h2>
+
+<p>*Explain use of Tween.js here*</p>
