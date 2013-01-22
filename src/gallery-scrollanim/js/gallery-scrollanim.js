@@ -5,6 +5,7 @@
  * @author Emily Yang <emyang@yahoo-inc.com>
  * @namespace scrollAnim
  * @class gallery-scrollanim
+ * 
  */
 YUI.add('gallery-scrollanim', function (Y) {
     'use strict';
@@ -14,16 +15,25 @@ YUI.add('gallery-scrollanim', function (Y) {
         ARRAY = Y.Array,
         NULL = null,
         TOUCH = Modernizr.touch;
-
+    /**
+    * Constructor, invoke Base constructor, passing through arguments
+    * @method ScrollAnim
+    **/
     function ScrollAnim() {
-        // Invoke Base constructor, passing through arguments
         ScrollAnim.superclass.constructor.apply(this, arguments);
 
     }
 
     ScrollAnim.NAME = "scrollAnim";
-
+    // configure the scroll anim instance
     ScrollAnim.ATTRS = {
+        /**
+        * Selector for main container that will wrap the whole content
+        * 
+        * @attribute node
+        * @type {Object}
+        * @default "NULL"
+        */
         node: {
             value: NULL,
             setter: function (node) {
@@ -36,6 +46,13 @@ YUI.add('gallery-scrollanim', function (Y) {
             },
             writeOnce: "initOnly"
         },
+        /**
+        * Stores the animation configuration
+        * 
+        * @attribute animations
+        * @type {Object}
+        * @default "NULL"
+        */
         animations: {
             value: NULL,
             setter: function (animations) {
@@ -64,6 +81,13 @@ YUI.add('gallery-scrollanim', function (Y) {
                 return animations;
             }
         },
+        /**
+        * Set the height of each section
+        * 
+        * @attribute slideHeight
+        * @type Int
+        * @default "NULL"
+        */
         slideHeight: {
             value: NULL,
             setter: function (slideHeight) {
@@ -75,32 +99,95 @@ YUI.add('gallery-scrollanim', function (Y) {
             },
             writeOnce: "initOnly"
         },
+        /**
+        * Set the max scroll height
+        * 
+        * @attribute maxScroll
+        * @type Int
+        * @default "1000"
+        */
         maxScroll: {
             value: {
                 value: 1000
             }
         },
+        /**
+        * Set interval (ms) if not using RAF (requestAnimationFrame)
+        * 
+        * @attribute tickSpeed
+        * @type Int
+        * @default "100"
+        */
         tickSpeed: {
             value: 100
         },
+        /**
+        * Set the speed of the scroll
+        * 
+        * @attribute scrollSpeed
+        * @type Int
+        * @default "20"
+        */
         scrollSpeed: {
             value: 20
         },
+        /**
+        * Set if the widget needs requestAnimationFrame (RAF)
+        * 
+        * @attribute useRAF
+        * @type Boolean
+        * @default "true"
+        */
         useRAF: {
             value: true
         },
+        /**
+        * Set scrollTop tween speed
+        * 
+        * @attribute tweenSpeed
+        * @type Int
+        * @default "0.3"
+        */
         tweenSpeed: {
             value: 0.3
         },
+        /**
+        * Set scrollTop where the experience starts
+        * 
+        * @attribute startAt
+        * @type Int
+        * @default "0"
+        */
         startAt: {
             value: 0
         },
+        /**
+        * Set a function fired on sroll start
+        * 
+        * @attribute onStart
+        * @type function
+        * @default "NULL"
+        */
         onStart: {
             value: null
         },
+        /**
+        * Set a function fired on whindows resize
+        * 
+        * @attribute onResize
+        * @type function
+        * @default "NULL"
+        */
         onResize: {
             value: null
         },
+        /**
+        * Set a function fired on sroll status update
+        * 
+        * @attribute onUpdate
+        * @type function
+        * @default "NULL"
+        */
         onUpdate: {
             value: null
         }
@@ -137,6 +224,11 @@ YUI.add('gallery-scrollanim', function (Y) {
 
         autoScrollInterval: 0,
 
+        /**
+        * Initialize the animation and the node specified on Attributes. This function also init some events for scroll and touch
+        * @method initializer
+        * @param {Object | cfg} Configuration for the widget
+        */
         initializer: function (cfg) {
             // initialize
             var node = this.get('node'),
@@ -160,12 +252,16 @@ YUI.add('gallery-scrollanim', function (Y) {
             this.resize();
         },
 
+        /**
+        * This function creates the animation work, it's used a timer loop to make changes every few milliseconds.
+        * It comes from a 3er party js, modified to use YUI. Original reference:
+        * http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+        * http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
+        * requestAnimationFrame polyfill by Erik Mâˆšâˆ‚ller
+        * fixes from Paul Irish and Tino Zijdel
+        * @method requestAnimationFramePolyfill
+        */
         requestAnimationFramePolyfill: function () {
-
-            // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
-            // http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
-            // requestAnimationFrame polyfill by Erik Mâˆšâˆ‚ller
-            // fixes from Paul Irish and Tino Zijdel
 
             var lastTime = 0,
                 vendors = ['ms', 'moz', 'webkit', 'o'],
@@ -198,6 +294,10 @@ YUI.add('gallery-scrollanim', function (Y) {
             }
         },
 
+        /**
+        * This is the default function to handle the windows resize 
+        * @method resize
+        */
         resize: function () {
             var container = this.get('node'),
                 width = parseInt(container.getComputedStyle('width'), 10),
@@ -223,6 +323,10 @@ YUI.add('gallery-scrollanim', function (Y) {
             this.start();
         },
 
+        /**
+        * This is the default function to start the animation
+        * @method start
+        */
         start: function () {
             var startAt = Y.Lang.isFunction(this.get('startAt')) ? this.get('startAt')() : this.get('startAt'),
                 onStart = this.get('onStart');
@@ -247,6 +351,11 @@ YUI.add('gallery-scrollanim', function (Y) {
             }
         },
 
+        /**
+        * This function determinates the direction and the animation time frame to make a smooth action.
+        * It also check if the animation is in range.
+        * @method animationLoop
+        */
         animationLoop: function () {
 
             window.requestAnimationFrame(Y.bind(this.animationLoop, this));
