@@ -295,7 +295,7 @@ YUI.add('gallery-scrollanim', function (Y) {
         },
 
         /**
-        * This is the default function to handle the windows resize 
+        * This is the default function to handle the windows resize
         * @method resize
         */
         resize: function () {
@@ -405,6 +405,10 @@ YUI.add('gallery-scrollanim', function (Y) {
             }
         },
 
+        /**
+        * 
+        * @method render
+        */
         render: function (anim) {
             var startAt = Y.Lang.isFunction(anim.startAt) ? anim.startAt() : anim.startAt,
                 endAt = Y.Lang.isFunction(anim.endAt) ? anim.endAt() : anim.endAt,
@@ -506,7 +510,11 @@ YUI.add('gallery-scrollanim', function (Y) {
             // destroy
         },
 
-        // Run before animation starts when animation is in range
+        /**
+        * This function runs before animation starts when animation is in range
+        * @method startAnimatable
+        * @param {Object | anim} animation instance
+        */
         startAnimatable: function (anim) {
             // apply start properties
             if (!anim._started) {
@@ -520,7 +528,11 @@ YUI.add('gallery-scrollanim', function (Y) {
             }
         },
 
-        /* run after animation is out of range  */
+        /**
+        * This function runs after animation is out of range
+        * @method stopAnimatable
+        * @param {Object | anim} animation instance
+        */
         stopAnimatable: function (anim) {
 
             var startAt = Y.Lang.isFunction(anim.startAt) ? anim.startAt() : anim.startAt,
@@ -543,9 +555,10 @@ YUI.add('gallery-scrollanim', function (Y) {
         },
 
         /**
-         * Calls onInit() callbacks passed to the animation object and to each key frame
-         * This function is called on init and on resize
-         */
+        * Calls onInit() callbacks passed to the animation object and to each key frame
+        * This function is called on init and on resize
+        * @method setAnimatable
+        */
         setAnimatable: function () {
             var animations = this.get('animations');
 
@@ -571,6 +584,10 @@ YUI.add('gallery-scrollanim', function (Y) {
             });
         },
 
+        /**
+        * 
+        * @method resetAnimatable
+        */
         resetAnimatable: function () {
             var animation = this.get('animation'),
                 anim,
@@ -588,7 +605,11 @@ YUI.add('gallery-scrollanim', function (Y) {
         },
 
         /***** Event handlers *****/
-        // scrollwheel event
+        /**
+        * Mouse wheel event handler. This function will allow the mouse wheel interaction.
+        * @method wheelHandler
+        * @param {Event | e } asociated event
+        */
         wheelHandler: function (e) {
             var scrollSpeed = this.get('scrollSpeed'),
                 delta = e.wheelDelta;
@@ -606,16 +627,29 @@ YUI.add('gallery-scrollanim', function (Y) {
             this.checkScrollExtents();
         },
 
-        // resize event
+        /**
+        * Windows resize event handler. This function will be fired on windows resize.
+        * @method resizeHandler
+        */
         resizeHandler: function () {
             this.resize();
         },
 
+        /**
+        * 
+        * @method scrollTo
+        * @param {Object | scroll } scroll
+        */
         scrollTo: function (scroll) {
             this.scrollTop = scroll;
         },
 
-        // touch events
+        /**
+        * On start touch event handler. This function Store the position of finger on
+        * swipe begin and set the scroll val on swipe begin.
+        * @method touchStartHandler
+        * @param {Event | e } asociated event
+        */
         touchStartHandler: function (e) {
             //alert('in touch start');
             //e.preventDefault();
@@ -632,6 +666,12 @@ YUI.add('gallery-scrollanim', function (Y) {
 
         },
 
+        /**
+        * On touch move event handler. This function gets distance finger has moved since swipe begin
+        * and add it to original scroll value.
+        * @method touchMoveHandler
+        * @param {Event | e } asociated event
+        */
         touchMoveHandler: function (e) {
             e.preventDefault();
             //alert('in touch move');
@@ -652,7 +692,16 @@ YUI.add('gallery-scrollanim', function (Y) {
         },
 
         /***** Utils *****/
-        // Get tweened value based on animation progress
+        /**
+        * Get tweened value based on animation progress
+        * @method getTweenedValue
+        * @param {Int | start } start position
+        * @param {Int | end } end position
+        * @param {Int | currentTime } Time passed since the animation start
+        * @param {Int | totalTime } Total estimated time
+        * @param {Object | tweener } TWEEN instance
+        * @return {Int} Tweened value
+        */
         getTweenedValue: function (start, end, currentTime, totalTime, tweener) {
             var delta = end - start,
                 percentComplete = currentTime / totalTime;
@@ -663,7 +712,10 @@ YUI.add('gallery-scrollanim', function (Y) {
 
             return tweener(percentComplete) * delta + start;
         },
-        // Keep scroll range between 0 and maximum scroll value
+        /**
+        * Keep scroll range between 0 and maximum scroll value
+        * @method checkScrollExtents
+        */
         checkScrollExtents: function () {
             var maxScroll = this.get('maxScroll').value;
 
