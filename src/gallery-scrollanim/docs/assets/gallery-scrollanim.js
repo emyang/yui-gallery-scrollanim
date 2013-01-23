@@ -64,7 +64,7 @@ YUI.add('gallery-scrollanim', function (Y) {
                 return animations;
             }
         },
-        slideHeight: {
+        /*slideHeight: {
             value: NULL,
             setter: function (slideHeight) {
                 if (!LANG.isNumber(slideHeight)) {
@@ -74,7 +74,7 @@ YUI.add('gallery-scrollanim', function (Y) {
                 return slideHeight;
             },
             writeOnce: "initOnly"
-        },
+        },*/
         maxScroll: {
             value: {
                 value: 1000

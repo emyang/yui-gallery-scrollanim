@@ -63,6 +63,7 @@ YUI().use('gallery-scrollanim', function(Y){
 	                { 
 	         	        position: 0,
 	         		    properties: {
+	         		    	"top": 0,
                             "background-position" : {x:"50%",y:0}
 	         		    }	
 	         	    },
@@ -70,6 +71,7 @@ YUI().use('gallery-scrollanim', function(Y){
 	         	        position: 1,
 	         		    ease: TWEEN.Easing.Linear.EaseNone,
 	         		    properties: {
+	         		    	"top": 100,
                             "background-position" : {x:"50%",y:-100}
 	         		    }
 	         	    }
@@ -199,15 +201,15 @@ YUI().use('gallery-scrollanim', function(Y){
 	                { 
 	         	        position: 0,
 	         		    properties: {
-                            "top": 0,
+                            "top": -100,
                             "background-position" : {x:"50%",y:-150}
 	         		    }	
 	         	    },
 	                {
 	         	        position: 1,
-	         		    ease: TWEEN.Easing.Linear.EaseNone,
+	         		    ease: TWEEN.Easing.Quadratic.EaseInOut,
 	         		    properties: {
-                            "top": -150,
+                            "top": 0,
                             "background-position" : {x:"50%",y:0}                          
 	         		    }
 	         	    }
@@ -331,15 +333,8 @@ YUI().use('gallery-scrollanim', function(Y){
         ], 
         scrollAnimConfig = {
             node: '#scrollanim-container',            // main container selector
-            slideHeight: 1000,                        // height of each section
             animations: animations,                   // animation data
-            maxScroll: 1500,                          // max scroll
-            useRAF: false,                             // set requestAnimationFrame
-            tickSpeed: 50,                            // set interval (ms) if not using RAF
-            scrollSpeed: 15,                          // scroll animation speed
-            debug: false,                             // turn on debug
-            tweenSpeed: 0.5,                          // scrollTop tween speed
-            startAt: 0                                // scrollTop where the experience starts
+            maxScroll: 1500                           // max scroll
         },
         scrollAnimWidget;
 
