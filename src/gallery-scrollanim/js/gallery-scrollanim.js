@@ -5,7 +5,6 @@
  * @author Emily Yang <emyang@yahoo-inc.com>
  * @namespace scrollAnim
  * @class gallery-scrollanim
- * 
  */
 //YUI.add('gallery-scrollanim', function (Y) {
     'use strict';
@@ -29,7 +28,6 @@
     ScrollAnim.ATTRS = {
         /**
         * Selector for main container that will wrap the whole content
-        * 
         * @attribute node
         * @type {Object}
         * @default "NULL"
@@ -48,7 +46,6 @@
         },
         /**
         * Stores the animation configuration
-        * 
         * @attribute animations
         * @type {Object}
         * @default "NULL"
@@ -83,7 +80,6 @@
         },
         /**
         * Set the height of each section
-        * 
         * @attribute slideHeight
         * @type Int
         * @default "NULL"
@@ -101,7 +97,6 @@
         },
         /**
         * Set the max scroll height
-        * 
         * @attribute maxScroll
         * @type Int
         * @default "1000"
@@ -113,7 +108,6 @@
         },
         /**
         * Set interval (ms) if not using RAF (requestAnimationFrame)
-        * 
         * @attribute tickSpeed
         * @type Int
         * @default "100"
@@ -123,7 +117,6 @@
         },
         /**
         * Set the speed of the scroll
-        * 
         * @attribute scrollSpeed
         * @type Int
         * @default "20"
@@ -133,7 +126,6 @@
         },
         /**
         * Set if the widget needs requestAnimationFrame (RAF)
-        * 
         * @attribute useRAF
         * @type Boolean
         * @default "true"
@@ -143,7 +135,6 @@
         },
         /**
         * Set scrollTop tween speed
-        * 
         * @attribute tweenSpeed
         * @type Int
         * @default "0.3"
@@ -153,7 +144,6 @@
         },
         /**
         * Set scrollTop where the experience starts
-        * 
         * @attribute startAt
         * @type Int
         * @default "0"
@@ -163,7 +153,6 @@
         },
         /**
         * Set a function fired on sroll start
-        * 
         * @attribute onStart
         * @type function
         * @default "NULL"
@@ -173,7 +162,6 @@
         },
         /**
         * Set a function fired on whindows resize
-        * 
         * @attribute onResize
         * @type function
         * @default "NULL"
@@ -183,7 +171,6 @@
         },
         /**
         * Set a function fired on sroll status update
-        * 
         * @attribute onUpdate
         * @type function
         * @default "NULL"
@@ -406,7 +393,6 @@
         },
 
         /**
-        * 
         * @method render
         */
         render: function (anim) {
@@ -585,7 +571,6 @@
         },
 
         /**
-        * 
         * @method resetAnimatable
         */
         resetAnimatable: function () {
@@ -636,7 +621,6 @@
         },
 
         /**
-        * 
         * @method scrollTo
         * @param {Object | scroll } scroll
         */
