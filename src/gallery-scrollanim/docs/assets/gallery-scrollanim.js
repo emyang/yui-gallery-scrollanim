@@ -12,13 +12,15 @@ YUI.add('gallery-scrollanim', function (Y) {
         NULL = null,
         d = Y.one('document'),
         w = Y.one('window'),
-        TOUCH = Modernizr.touch ? true : false;
+        TOUCH = false; //Default is a Desktop Enviroment
 
     function ScrollAnim(cfg) {
-
         // Invoke Base constructor, passing through arguments
         ScrollAnim.superclass.constructor.apply(this, arguments);
-
+        //Touch is part of the configuration (boolean)
+        if (cfg.touchEnable) {
+            TOUCH = cfg.touchEnable;
+        }
     }
 
     ScrollAnim.NAME = "scrollAnim";

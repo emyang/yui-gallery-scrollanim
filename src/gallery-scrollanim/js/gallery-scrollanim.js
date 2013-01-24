@@ -13,14 +13,15 @@
         LANG = Y.Lang,
         ARRAY = Y.Array,
         NULL = null,
-        TOUCH = Modernizr.touch;
-    /**
-    * Constructor, invoke Base constructor, passing through arguments
-    * @method ScrollAnim
-    **/
-    function ScrollAnim() {
-        ScrollAnim.superclass.constructor.apply(this, arguments);
+        TOUCH = false; //Default is a Desktop Enviroment
 
+    function ScrollAnim(cfg) {
+        // Invoke Base constructor, passing through arguments
+        ScrollAnim.superclass.constructor.apply(this, arguments);
+        //Touch is part of the configuration (boolean)
+        if (cfg.touchEnable) {
+            TOUCH = cfg.touchEnable;
+        }
     }
 
     ScrollAnim.NAME = "scrollAnim";
