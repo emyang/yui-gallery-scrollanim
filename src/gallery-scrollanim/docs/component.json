@@ -7,6 +7,7 @@
     "yuiVersion" : "3.8.0",
     "yuiBuildUrl" : "http://yui.yahooapis.com/3.8.0/build",
     "yuiSeedUrl" : "http://yui.yahooapis.com/3.8.0/build/yui/yui-min.js",
+    "localBuildUrl": "../../build/"
 
     "tags": [ "gallery" ],
 

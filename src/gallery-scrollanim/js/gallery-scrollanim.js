@@ -7,7 +7,7 @@
  * @class gallery-scrollanim
  * 
  */
-YUI.add('gallery-scrollanim', function (Y) {
+//YUI.add('gallery-scrollanim', function (Y) {
     'use strict';
 
     var ATTRIBUTE = Y.Attribute,
@@ -730,6 +730,6 @@ YUI.add('gallery-scrollanim', function (Y) {
 
     Y.ScrollAnim = ScrollAnim;
 
-}, '0.0.1', {
+/*}, '0.0.1', {
     requires: ['base', 'yui-throttle', 'transition', 'event-mousewheel', 'event-resize', 'event-touch']
-});
+});*/

@@ -47,14 +47,74 @@ scrollAnimWidget = new Y.ScrollAnim(scrollAnimConfig);
 
 <h3>`Animation` Attribute</h3>
 
-<p>The `animation` attribute will contain individual animation details for each 
+<p>The `animation` attribute will contain individual animation details for each HTML element.  Below is an example of the animation attribute:</p>
+
+```
+var animation = 
+    [
+    	    {
+	            selector: '#divContainer',
+	            startAt: 500,
+	            endAt: 1200,
+	            onEndAnimate: function( anim ) {},
+	            keyframes: [
+	                { 
+	         	        position: 0,
+	         		    properties: {
+	         		    	"top": 0,
+                            "background-position" : {x:"50%",y:0}
+	         		    }	
+	         	    },
+	                {
+	         	        position: 1,
+	         		    ease: TWEEN.Easing.Linear.EaseNone,
+	         		    properties: {
+	         		    	"top": 100,
+                            "background-position" : {x:"50%",y:-100}
+	         		    }
+	         	    }
+	            ]
+	        },    
+    	    {
+	            selector: '#divContainer article',
+	            startAt: 0,
+	            endAt: 600,
+	            onEndAnimate: function( anim ) {},
+	            keyframes: [
+	                { 
+	         	        position: 0,
+	         		    properties: {
+	         		    	"top": 250,
+	         			    "opacity": 1
+	         		    }	
+	         	    },
+	                {
+	         	        position: 1,
+	         		    ease: TWEEN.Easing.Quadratic.EaseInOut,
+	         		    properties: {
+	         		    	"top": -100,
+	         		        "opacity": 0
+	         		    }
+	         	    }
+	            ]
+	        }
+	]
+```
+
+<p>The following table shows all possible properties to each object in the animation attribute:</p>
+<table>
+    <tr><th>Property</th><th>Description</th><th>Type</th><th>Required</th></tr>
+    <tr><td>`selector`</td><td>CSS selector used to retrieve an element</td><td>String</td><td>Yes</td></tr>
+    <tr><td>`startAt`</td><td>`window.scrollTop` position where the animation for this element should start</td><td>Integer</td><td>Yes</td></tr>
+</table>
+
 
 <h3>ScrollAnim Attributes</h2>
 
-<p>ScrollAnim REQUIRES the following attributes to be set, in addition to the attributes provided by the base <a href="http://yuilibrary.com/yui/docs/widget/index.html#attributes">Widget</a> class:</p>
+<p>ScrollAnim requires the following attributes to be set, in addition to the attributes provided by the base <a href="http://yuilibrary.com/yui/docs/widget/index.html#attributes">Widget</a> class:</p>
 
 <table>
-    <tr><th>Attribute</th><th>Description</th></tr>
+    <tr><th>Attribute (Required)</th><th>Description</th></tr>
     <tr><td>`node`</td><td>Main container selector</td></tr>
     <tr><td>`animations`</td><td>Animation data for all animated HTML elements</td></tr>    
     <tr><td>`maxScroll`</td><td>Maximum `window.scrollTop` value in which the scrolling animation should stop</td></tr>
@@ -63,7 +123,7 @@ scrollAnimWidget = new Y.ScrollAnim(scrollAnimConfig);
 <p>The following are optional attributes:</p>
 
 <table>
-    <tr><th>Attribute</th><th>Description</th><th>Default Value</th></tr>
+    <tr><th>Attribute (Optional)</th><th>Description</th><th>Default Value</th></tr>
     <tr><td>`startAt`</td><td>Minimum `window.scrollTop` value in which the scrolling animation should start</td><td>0 (pixel)</td></tr>
     <tr><td>`useRAF`</td><td>Set if the widget should use `window.requestAnimationFrame` method when available.</td><td>true</td></tr>
     <tr><td>`tickSpeed`</td><td>Set interval (ms) for `window.setInterval` if not using RAF</td><td>100 (milliseconds)</td></tr>
@@ -74,7 +134,7 @@ scrollAnimWidget = new Y.ScrollAnim(scrollAnimConfig);
 
 <h2>Markup Structure</h2>
 
-<p>The widget does not require much markup beyond the widget container.</p>
+<p>The widget does not require much markup beyond the widget container.  However, for most cases you will have a site that needs the users to scroll vertically.  In this case, you will need a parent element containing the rest of the animated elements that will move upward.  To achieve this you will need both markup and configuration in the `animation` attribute.
 
 <h2>CSS</h2>
 

@@ -3,8 +3,13 @@
     "builds": {
         "gallery-scrollanim": {
             "jsfiles": [
-                "js/gallery-scrollanim.js"
-            ]
+                "./js/gallery-scrollanim.js"
+            ],
+        	"replace": {
+                "@VERSION@": "0.0.1"
+            }            
         }
     }
 }
+
+
