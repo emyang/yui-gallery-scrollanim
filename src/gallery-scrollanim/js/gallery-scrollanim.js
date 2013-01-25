@@ -153,7 +153,7 @@
             value: 0
         },
         /**
-        * Set a function fired on sroll start
+        * Set a function fired on scroll start
         * @attribute onStart
         * @type function
         * @default "NULL"
@@ -171,7 +171,7 @@
             value: null
         },
         /**
-        * Set a function fired on sroll status update
+        * Set a function fired on scroll status update
         * @attribute onUpdate
         * @type function
         * @default "NULL"
@@ -534,9 +534,9 @@
 
                 if (anim.onEndAnimate && typeof anim.onEndAnimate === 'function') {
                     anim.onEndAnimate(anim, this.scrollDirection);
-                } else {
+                }/* else {
                     anim.node.setStyle('display', 'none');
-                }
+                }*/
                 anim._started = false;
             }
         },

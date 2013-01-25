@@ -14,8 +14,8 @@
     "examples": [
         {
         	"name": "simple-scrollanim",
-        	"displayName": "Scrolling Animation",
-        	"description": "Simple demo of Scroll Animation widget",
+        	"displayName": "Vertical Scrolling Animation",
+        	"description": "Simple demo of ScrollAnim widget for a vertically scrolled page",
         	"modules": ["gallery-scrollanim"],
         	"tags": ["widget", "gallery-scrollanim"],
         	"hideTableOfContents": true
@@ -25,7 +25,7 @@
     "pages": {
         "simple-scrollanim-example": {
         	"name": "simple-scrollanim",
-            "displayName": "Simple Scroll Animation Example",
+            "displayName": "Simple Vertical Scroll Animation Example",
             "layout": "simple-scrollanim-example"
         }
     }

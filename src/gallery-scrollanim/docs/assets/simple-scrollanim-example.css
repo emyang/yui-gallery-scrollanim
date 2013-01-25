@@ -1,11 +1,9 @@
 html {
-    height:100%;
     background-color: #000;
 }
 
 body {
     overflow: hidden; /* stops the scrolling out of bounds behavior in Safari that messes up the scroll animation */
-    height:100%;
     width: 1200px;
     margin: 0 auto;
 }
