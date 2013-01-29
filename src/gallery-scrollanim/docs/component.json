@@ -14,8 +14,8 @@
     "examples": [
         {
         	"name": "simple-scrollanim",
-        	"displayName": "Vertical Scrolling Animation",
-        	"description": "Simple demo of ScrollAnim widget for a vertically scrolled page",
+        	"displayName": "Vertical Scrolling Animation with Parallax Effects",
+        	"description": "Simple demo of ScrollAnim widget for a vertically scrolled page with animated elements and parallax effects.",
         	"modules": ["gallery-scrollanim"],
         	"tags": ["widget", "gallery-scrollanim"],
         	"hideTableOfContents": true

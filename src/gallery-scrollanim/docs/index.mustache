@@ -68,7 +68,7 @@ scrollAnimWidget = new Y.ScrollAnim(scrollAnimConfig);
     <tr><td>`debug`</td><td>Turn on debug mode</td><td>false</td></tr>
     <tr><td>`onStart`</td><td>Custom function called once when the widget starts the animation</td><td>Null</td></tr>
     <tr><td>`onUpdate`</td><td>Custom function called every time an animation frame is rendered</td><td>Null</td></tr>
-    <tr><td>`onResize`</td>Custom function called when the window is resized<td></td><td>Null</td></tr>
+    <tr><td>`onResize`</td><td>Custom function called when the window is resized</td><td>Null</td></tr>
 </table>
 
 <h3>`Animation` Attribute</h3>
@@ -145,6 +145,7 @@ var animation =
     <tr><td>`position`</td><td>Either 0 or 1.<br>0 indicates this is the keyframe at the start of the animation.<br>1 indicates this is the keyframe at the end of the animation.</td></tr>
     <tr><td>`properties`</td><td>An object containing all the CSS properties whose values need to be updated when the element is animated.</td></tr>
     <tr><td>`ease`</td><td>The easing function used to animate the element.  This property only need to be included in the end position object.  Please see 3rd Party Dependency section below for more information on how to specify the easing function to use.</td></tr>
+    <tr><td>`onInit`</td><td>Custom function invoked at the beginning of the element's animation.  Should only be included in the position "0" object.</td></tr>
 </table>
 
 <h2>Markup, CSS, and Configuration for a Vertically Scrolling Page</h2>
@@ -164,49 +165,46 @@ var animation =
 <p>The configuration needed:</p>
 ```
     var animations = [
-            {
-	            selector: '#verticalScrollArea',
-	            startAt: 0,                                     /* Vertical scroll element should animate at the very top */
-	            endAt: 1500,                                    /* End animation at the same position as the "maxScroll" attribute in the widget configuration */
-	            keyframes: [
-	                {
-	         	        position: 0,                            /* Start keyframe */
-	         		    properties: {
-	         			    top: 0                              /* Manipulate the "top" property and set it to 0 at the beginning of the animation */
-	         		    }
-	         	    },
-	         	    {
-	         		    position: 1,                            /* End keyframe */ 
-	         		    ease: TWEEN.Easing.Linear.EaseInOut,    /* Easing effects so the page does not scroll exactly in sync with the user's scroll*/
-	         		    properties: {
-	         		        top: -1000                          /* Manipulate the "top" proprety and set it to how much the page will be scrolled up at the end of the animation */
-	         		    }
-	         	    }
-	            ]
-	        },
-	        /* ... animation objects for children elements */
-        ]
+        {
+	        selector: '#verticalScrollArea',
+	        startAt: 0,                                     /* Vertical scroll element should animate at the very top */
+	        endAt: 1500,                                    /* End animation at the same position as the "maxScroll" attribute */
+	        keyframes: [
+	            {
+	         	    position: 0,                            /* Start keyframe */
+	         		properties: {
+	         			top: 0                              /* Set "top" to 0 at the beginning of the animation */
+	         		}
+	         	},
+	         	{
+	         		position: 1,                            /* End keyframe */
+	         		ease: TWEEN.Easing.Linear.EaseInOut,    /* Easing effects on vertical scroll container if needed */
+	         		properties: {
+	         		    top: -1000                          /* Set "top" to how much the vertical container should scorll in the end */
+	         		}
+	         	}
+	        ]
+	    },
+	    /* ... animation objects for children elements */
+    ]
 ```
 
 <p>CSS needed:</p>
 
 ```
 body {
-    /*
-     * The browser default scrollbar might not display and function correctly since we are manipulating the "top" property of a "div" element to * simulate vertical page scroll.  Also this stops the scrolling out of bounds behavior in Safari that messes up the scroll animation.
-     */
+    /* Browser does not render the correct scroll progress in the default scrollbar when we're simply adjusting a container element's "top" property to simulate vertical scrolling. */
     overflow: hidden;
 }
 
 #verticalScrollArea{
-    /*
-     * This is important for all children elements whose "top", "right", "left", "bottom" CSS properties will be updated to be relative to the 
-     * vertical scroll container.
-     */
+    /* This is important so this element can be moved vertically by the widget to create vertical scrolling page. */
     position: absolute;
 }
 ```
 
 <h2>3rd Party Dependency</h2>
 
-<p>*Explain use of Tween.js here*</p>
+<h3>Tween.js</h3>
+<p>Tween.js is a 3rd party library that is compatible and recommended for use with the widget for the easing equations.</p>
+<p>For more information, please visit the <a href="https://github.com/sole/tween.js">Tween.js Github page</a>.</p>

@@ -43,7 +43,7 @@ YUI().use('gallery-scrollanim', function(Y){
 	         	    },
 	         	    {
 	         		    position: 1,
-	         		    ease: TWEEN.Easing.Linear.EaseInOut,
+	         		    ease: TWEEN.Easing.Quadratic.EaseInOut,
 	         		    onInit: function( anim ) {
 					        //this.properties['top'] = -detailStart +  Math.max( ((wHeight-1000)/2) , 0);
 					        //this.properties['top'] = -totalHeightPx +  Math.max( ((wHeight-1000)/2) , 0);
@@ -56,7 +56,7 @@ YUI().use('gallery-scrollanim', function(Y){
 	        },    
     	    {
 	            selector: '#kittens',
-	            startAt: 500,
+	            startAt: 200,
 	            endAt: 1200,
 	            onEndAnimate: function( anim ) {},
 	            keyframes: [
@@ -69,10 +69,10 @@ YUI().use('gallery-scrollanim', function(Y){
 	         	    },
 	                {
 	         	        position: 1,
-	         		    ease: TWEEN.Easing.Linear.EaseNone,
+	         		    ease: TWEEN.Easing.Quadratic.EaseInOut,
 	         		    properties: {
 	         		    	"top": 100,
-                            "background-position" : {x:"50%",y:-100}
+                            "background-position" : {x:"50%",y:-500}
 	         		    }
 	         	    }
 	            ]
@@ -194,7 +194,7 @@ YUI().use('gallery-scrollanim', function(Y){
 	        },
     	    {
 	            selector: '#dogs',
-	            startAt: 0,
+	            startAt: 500,
 	            endAt: 1500,
 	            onEndAnimate: function( anim ) {},
 	            keyframes: [
@@ -207,7 +207,7 @@ YUI().use('gallery-scrollanim', function(Y){
 	         	    },
 	                {
 	         	        position: 1,
-	         		    ease: TWEEN.Easing.Quadratic.EaseInOut,
+	         		    ease: TWEEN.Easing.Quadratic.EaseOut,
 	         		    properties: {
                             "top": 0,
                             "background-position" : {x:"50%",y:0}                          
@@ -218,7 +218,7 @@ YUI().use('gallery-scrollanim', function(Y){
     	    {
 	            selector: '#dogs article',
 	            startAt: 800,
-	            endAt: 1200,
+	            endAt: 1400,
 	            onEndAnimate: function( anim ) {},
 	            keyframes: [
 	                { 
@@ -230,9 +230,9 @@ YUI().use('gallery-scrollanim', function(Y){
 	         	    },
 	                {
 	         	        position: 1,
-	         		    ease: TWEEN.Easing.Quadratic.EaseInOut,
+	         		    ease: TWEEN.Easing.Bounce.EaseOut,
 	         		    properties: {
-	         		    	"top": 200,
+	         		    	"top": 300,
 	         		        "opacity": 1
 	         		    }
 	         	    }
