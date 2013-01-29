@@ -1,11 +1,12 @@
-YUI Gallery Widget: yui-gallery-scrollanim
+YUI3 Gallery Widget: yui-gallery-scrollanim
 ==========================================
 
-This is a YUI3 Gallery widget that animates HTML elements based on 
-window.scrollTop property.
+This is a widget that animates HTML elements based on window.scrollTop 
+property.
 
+------------------------------------------
 
-Copyright (c) [INSERT YEAR], Yahoo! Inc.  All rights reserved.
+Copyright (c) 2013, Yahoo! Inc.  All rights reserved.
 
 Redistribution and use of this software in source and binary forms, 
 with or without modification, are permitted provided that the following 
@@ -36,3 +37,14 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
 THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT 
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+------------------------------------------
+
+Except as specifically stated below, the 3rd party software packages are not
+distributed as part of this project, but instead are separately downloaded 
+from the respective provider and built on the developer’s machine as a 
+pre-build step.
+   * tween.js (https://github.com/sole/tween.js/blob/master/LICENSE)
+   * Super simple, fast and easy to use tweening engine which incorporates 
+     optimised Robert Penner's equations.
+   * Github Page - https://github.com/sole/tween.js
