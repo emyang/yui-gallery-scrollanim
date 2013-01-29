@@ -1,12 +1,46 @@
-/*global YUI,Modernizr,window,TWEEN*/
+/*
+ * Copyright (c) 2013, Yahoo! Inc.  All rights reserved.
+ *
+ * Redistribution and use of this software in source and binary forms,
+ * with or without modification, are permitted provided that the following
+ * conditions are met:
+ *
+ * - Redistributions of source code must retain the above
+ *   copyright notice, this list of conditions and the
+ *   following disclaimer.
+ *
+ * - Redistributions in binary form must reproduce the above
+ *   copyright notice, this list of conditions and the
+ *   following disclaimer in the documentation and/or other
+ *   materials provided with the distribution.
+ *
+ * - Neither the name of Yahoo! Inc. nor the names of its
+ *   contributors may be used to endorse or promote products
+ *   derived from this software without specific prior
+ *   written permission of Yahoo! Inc.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+ * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+ * TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+ * PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*global YUI,window,TWEEN*/
 /*jslint nomen: true*/
 /**
- * This is a widget that animates HTML elements based on vertical page scroll.
+ * This is a widget that animates HTML elements based on window.scrollTop property.
  * @author Emily Yang <emyang@yahoo-inc.com>
+ * @author Renato Iwashima <renatoi@yahoo-inc.com>
  * @namespace scrollAnim
  * @class gallery-scrollanim
  */
-//YUI.add('gallery-scrollanim', function (Y) {
     'use strict';
 
     var ATTRIBUTE = Y.Attribute,
@@ -78,23 +112,6 @@
 
                 return animations;
             }
-        },
-        /**
-        * Set the height of each section
-        * @attribute slideHeight
-        * @type Int
-        * @default "NULL"
-        */
-        slideHeight: {
-            value: NULL,
-            setter: function (slideHeight) {
-                if (!LANG.isNumber(slideHeight)) {
-                    Y.log('ScrollAnim: slideHeight must contain only numbers (in pixels): ' + slideHeight, 'error');
-                    return ATTRIBUTE.INVALID_VALUE;
-                }
-                return slideHeight;
-            },
-            writeOnce: "initOnly"
         },
         /**
         * Set the max scroll height
@@ -610,7 +627,7 @@
                 this.scrollTop = 0;
             }
 
-            this.checkScrollExtents();
+            this.checkMaxScroll();
         },
 
         /**
@@ -672,7 +689,7 @@
             if (Math.abs(offset.y) > Math.abs(offset.x)) {
                 // Add finger move dist to original scroll value
                 this.scrollTop = Math.max(0, this.scrollStart + offset.y);
-                this.checkScrollExtents();
+                this.checkMaxScroll();
             }
         },
 
@@ -699,9 +716,9 @@
         },
         /**
         * Keep scroll range between 0 and maximum scroll value
-        * @method checkScrollExtents
+        * @method checkMaxScroll
         */
-        checkScrollExtents: function () {
+        checkMaxScroll: function () {
             var maxScroll = this.get('maxScroll').value;
 
             if (this.scrollTop < 0) {
@@ -714,7 +731,3 @@
     });
 
     Y.ScrollAnim = ScrollAnim;
-
-/*}, '0.0.1', {
-    requires: ['base', 'yui-throttle', 'transition', 'event-mousewheel', 'event-resize', 'event-touch']
-});*/
