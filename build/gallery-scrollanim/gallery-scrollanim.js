@@ -36,12 +36,14 @@ YUI.add('gallery-scrollanim', function (Y, NAME) {
 
 /*global YUI,window,TWEEN*/
 /*jslint nomen: true*/
+
 /**
- * This is a widget that animates HTML elements based on window.scrollTop property.
+ * This is a YUI module that animates HTML elements based on window.scrollTop property.
+ *
  * @author Emily Yang <emyang@yahoo-inc.com>
  * @author Renato Iwashima <renatoi@yahoo-inc.com>
- * @namespace scrollAnim
- * @class gallery-scrollanim
+ *
+ * @module gallery-scrollanim
  */
     'use strict';
 
@@ -51,6 +53,15 @@ YUI.add('gallery-scrollanim', function (Y, NAME) {
         NULL = null,
         TOUCH = false; //Default is a Desktop Enviroment
 
+    /**
+     * ScrollAnim provides a YUI module that can animate any HTML element based on
+     * user's scroll position and supports both touch/mouse based devices.
+     *
+     * @class ScrolAnim
+     * @param cfg {Object} Object literal with initial attribute values
+     * @extends Base
+     * @constructor
+     */
     function ScrollAnim(cfg) {
         // Invoke Base constructor, passing through arguments
         ScrollAnim.superclass.constructor.apply(this, arguments);
