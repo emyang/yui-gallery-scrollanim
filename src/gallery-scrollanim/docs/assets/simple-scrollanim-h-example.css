@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0; 
+}
+body {
+    overflow: hidden;
+}
+#horizontalScrollAream {
+    position: absolute;
+}
+#horizontalScrollAream,
+#horizontalScrollArea div {
+    width: 100%;
+    height: 3000px;
+}
+.bg {
+    background: url(bg.png) repeat 5% 5%;
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 100;
+}
+.earth {
+    background: url(earth.png) no-repeat left top;
+    position: absolute;
+    z-index: 101;
+}
+.mg {
+    background: url(mg.png) repeat 20% 20%;
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 150;
+}
+.meteor {
+    position: absolute;
+    z-index: 102;
+    top: 0;
+    right: 0;
+}
+.fg {
+    background: url(fg.png) repeat 90% 110%;
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 200;
+}

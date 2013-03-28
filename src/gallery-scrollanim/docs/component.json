@@ -19,6 +19,14 @@
         	"modules": ["gallery-scrollanim"],
         	"tags": ["widget", "gallery-scrollanim"],
         	"hideTableOfContents": true
+        },
+        {
+            "name": "simple-scrollanim-h",
+            "displayName": "Vertical Scrolling Animation with Horizontal Parallax Effects",
+            "description": "Simple demo of ScrollAnim widget for a vertically scrolled page with horizontal animated elements and parallax effects.",
+            "modules": ["gallery-scrollanim"],
+            "tags": ["widget", "gallery-scrollanim"],
+            "hideTableOfContents": true
         }
     ],
 
@@ -27,6 +35,11 @@
         	"name": "simple-scrollanim",
             "displayName": "Simple Vertical Scroll Animation Example",
             "layout": "simple-scrollanim-example"
+        },
+        "simple-scrollanim-h-example": {
+            "name": "simple-scrollanim-h",
+            "displayName": "Simple Vertical Scroll With Horizontal Animation Example",
+            "layout": "simple-scrollanim-h-example"
         }
     }
 }
