@@ -20,51 +20,62 @@ To start using the widget, include `'gallery-scrollanim'` in your `YUI().use()` 
 
 <h3>Javascript</h3>
 ```
-    {{>simple-source-js}}
+    {{>simple-h-source-js}}
 ```
 
-<p>To create a page with vertical scroll animation, the most important animation object specified is the `verticalScrollArea` container, which is the parent container to all other elements.  The other animation objects can be anything you wish to animate as the user scrolls vertically up or down the page.</p>
+<p>To create a page with horizontal animation, the most important animation object specified is the `horizontalScrollArea` container, which is the parent container to all other elements.  The other animation objects can be anything you wish to animate as the user scrolls vertically up or down the page.</p>
 
-<p>In this example, we included animation for the `#kittens` section element by adjusting its `top` and `background-position` properties to create a "parallax scrolling effect" as the user start scrolling.  See below links for some great examples of parallax scrolling used in various sites:</p>
-<ul>
-    <li>
-    	<a href="http://www.techrepublic.com/blog/webmaster/how-the-parallax-effect-is-used-in-web-design/1503" target="_blank">How the Parallax Effect is Used in Web Design (www.techrepublic.com)</a>
-    </li>
-    <li>
-    	<a href="http://www.visualswirl.com/inspiration/30-examples-parallax-scrolling-effects-web-design/" target="_blank">30 Examples of Parallax Scroll Effects in Web Design (www.visualswirl.com)</a>
-    </li>
-    <li>
-    	<a href="http://line25.com/articles/showcase-of-parallax-scrolling-effects-in-web-design" target="_blank">Showcase of Parallax Scrolling Effects in Web Design (line25.com)</a>
-    </li>
-</ul>
-
-<p>Then within the `#kittens` element we also animate article and image elements by adjusting either the `top` or `left` properties to move the elements across the page.  At the same time, the `opacity` property for the article and image elements are also animated to create the fade-in and fade-out effects.</p>
+<p>In this example, we included animation for the img element by adjusting its `top`, `width` and `height` properties to create a "fade-in effect". Besides, we used foreground, midbackground and background image, changing their "background-position" property to create "parallax scrolling effect" in horizontal direction as the user start scrolling.
 
 <h2 id="source">Other Sources</h2>
 
 <h3>HTML</h3>
-<p>An important element used to enable vertical scroll animation is the `#verticalScrollArea` element.  Then within this element is where the two main sections are specified and their `background-position` elements are use to create the parallax effects mentioned earlier.</p>
+<p>An important element used to enable scrolling with horizontal animation is the `#horizontalScrollArea` element.  Then within this element is where the three main division are specified and their `background-position` property are use to create the parallax effects mentioned earlier.</p>
 
 ```
-    {{>simple-source-html}}
+    {{>simple-h-source-html}}
 ```
 
 <h3>CSS</h3>
 
-<p>The CSS rules in the example are mostly used to style and position elements.  However, including the following rules shown are crucial to create the vertical scrolling effects.</p>
+<p>The CSS rules in the example are mostly used to style and position elements.  However, including the following rules shown are crucial to create the horizontal scrolling effects.</p>
 
 ```
 body {
-    /* Browser does not render the correct scroll progress in the default scrollbar when we're simply adjusting a container element's "top" property to simulate vertical scrolling. */
+    /* Browser does not render the correct scroll progress in the default scrollbar when we're simply adjusting
+     a container element's "top" property to simulate vertical scrolling. */
     overflow: hidden;
 }
-
-#verticalScrollArea{
-    /* This is important so this element can be moved vertically by the widget to create vertical scrolling page. */
+#horizontalScrollAream {
+    /* The distance that this element can be moved vertically by the widget. */
+    height: 3000px;
+}
+#horizontalScrollArea div {
+    /* Division within horizontalScrollArea should be set the same height as container. */
+    width: 100%;
+    height: 100%;
+}
+.bg, .mg, .fg {
     position: absolute;
+    top: 0;
+    left: 0;
+}
+.bg {
+    background: url(bg.png) repeat 0 0;
+    z-index: 100;
+}
+.mg {
+    background: url(mg.png) repeat 0 0;
+    z-index: 110;
+}
+.fg {
+    background: url(fg.png) repeat 0 0;
+    z-index: 120;
 }
 ```
 
 <p>Setting `overflow:hidden` on the body element will hide the browser default scrollbar.  The reason we want this rule is because the browser scrollbar does not reflect properly the scroll process during the animation.</p>
 
-<p>Setting `position:absolute` on the `#verticalScrollArea` will make sure the `top` property will be enabled on the element so the whole page can scroll vertically by the widget.</p>
+<p>Setting `height: 3000px` on the `#horizontalScrollArea` will set the height property on the element so the whole page can scroll distance from 0px to 3000px vertically by the widget.</p>
+
+<p>Setting `position:absolute` and `z-index` properties on background, midground and foreground to create parallax scrolling effect as user start scrolling</p>
