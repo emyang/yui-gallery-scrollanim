@@ -1,0 +1,38 @@
+body {
+    overflow: hidden;
+}
+#horizontalScrollArea {
+    height: 3000px;
+}
+#horizontalScrollArea div {
+    width: 100%;
+    height: 100%;
+}
+.bg, .mg, .fg {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.bg {
+    background: url(bg.png) repeat 0 0;
+    z-index: 100;
+}
+.earth {
+    background: url(earth.png) no-repeat left top;
+    position: absolute;
+    z-index: 101;
+}
+.meteor {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 102;
+}
+.mg {
+    background: url(mg.png) repeat 0 0;
+    z-index: 110;
+}
+.fg {
+    background: url(fg.png) repeat 0 0;
+    z-index: 120;
+}

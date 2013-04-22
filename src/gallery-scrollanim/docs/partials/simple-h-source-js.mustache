@@ -1,0 +1,118 @@
+YUI().use('gallery-scrollanim', function (Y) {
+    var animations = [ 
+            {
+                selector: '.bg',
+                startAt: 0,
+                endAt: 3000,
+                onEndAnimate: function( anim ) {},
+                keyframes: [
+                    { 
+                        position: 0,
+                        properties: {
+                            "background-position" : {
+                                x:0,
+                                y:0
+                            }
+                        }  
+                    },
+                    {
+                        position: 1,
+                        ease: TWEEN.Easing.Linear.EaseNone,
+                        properties: {
+                            "background-position" : {
+                                x: -625,
+                                y: -125
+                            }
+                        }
+                    }
+                ]
+            },    
+            {
+                selector: '.mg',
+                startAt: 0,
+                endAt: 3000,
+                onEndAnimate: function( anim ) {},
+                keyframes: [
+                    { 
+                        position: 0,
+                        properties: {
+                            "background-position" : {
+                                x:0,
+                                y:0
+                            }
+                        }  
+                    },
+                    {
+                        position: 1,
+                        ease: TWEEN.Easing.Linear.EaseNone,
+                        properties: {
+                            "background-position" : {
+                                x: -2500,
+                                y: -500
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                selector: '.fg',
+                startAt: 0,
+                endAt: 3000,
+                onEndAnimate: function( anim ) {},
+                keyframes: [
+                    { 
+                        position: 0,
+                        properties: {
+                            "background-position" : {
+                                x:0,
+                                y:0
+                            }
+                        }  
+                    },
+                    {
+                        position: 1,
+                        ease: TWEEN.Easing.Linear.EaseNone,
+                        properties: {
+                            "background-position" : {
+                                x: -10000,
+                                y: -2000
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                selector: '.meteor',
+                startAt: 0,
+                endAt: 3000,
+                onEndAnimate: function( anim ) {},
+                keyframes: [
+                    { 
+                        position: 0,
+                        properties: {
+                            "width": 50,
+                            "right": 0,
+                            "top": 0
+                        } 
+                    },
+                    {
+                        position: 1,
+                        ease: TWEEN.Easing.Quadratic.EaseInOut,
+                        properties: {
+                            "width": 600,
+                            "right": 1200,
+                            "top": 400
+                        }
+                    }
+                ]
+            }               
+        ], 
+        scrollAnimConfig = {
+            node: '#scrollanim-container',            // main container selector
+            animations: animations,                   // animation data
+            maxScroll: 3000                           // max scroll
+        },
+        scrollAnimWidget;
+
+    scrollAnimWidget = new Y.ScrollAnim(scrollAnimConfig);
+});
